@@ -85,6 +85,31 @@ public class ManejadorErrores {
         return ResponseEntity.badRequest().body(error);
     }
 
+    @ExceptionHandler(
+            org.springframework.http.converter.HttpMessageNotReadableException.class
+    )
+    public ResponseEntity<ErrorDTO> manejarErrorEnum(
+            Exception ex,
+            HttpServletRequest request
+    ){
+
+        ErrorDTO error = new ErrorDTO(
+
+                LocalDateTime.now(),
+                400,
+                "[ERROR] Valores inválidos: "
+
+                        + "Los metodos validos de pago son: "
+
+                        + "DEBITO, CREDITO, TRANSFERENCIA, WEBPAY",
+                null,
+                request.getRequestURI()
+
+        );
+
+        return ResponseEntity.badRequest().body(error);
+    }
+
         @ExceptionHandler(RuntimeException.class)
 
         public ResponseEntity<ErrorDTO> manejarErrorInterno(
