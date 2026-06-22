@@ -99,7 +99,7 @@ public class PagoController {
 
     @Operation(
         summary = "Registrar pago",
-        description = "Permite registrar los intentos de un pago en el sistema"
+        description = "Permite registrar los intentos de un pago en el sistema. Metodos de Pago: DEBITO, CREDITO, TRANSFERENCIA, WEBPAY"
     )
     @ApiResponses(value = {
             @ApiResponse(responseCode = "201", description = "Pago registrado en el sistema"),
