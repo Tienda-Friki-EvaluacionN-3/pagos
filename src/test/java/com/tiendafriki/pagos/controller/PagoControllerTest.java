@@ -68,7 +68,7 @@ class PagoControllerTest {
         when(service.listar())
                 .thenReturn(List.of(crearResponseDTO()));
 
-        mockMvc.perform(get("/pago/listar"))
+        mockMvc.perform(get("/pagos/listar"))
                 .andExpect(status().isOk());
     }
 
@@ -78,7 +78,7 @@ class PagoControllerTest {
         when(service.buscarPorId(1))
                 .thenReturn(crearResponseDTO());
 
-        mockMvc.perform(get("/pago/buscarId/1"))
+        mockMvc.perform(get("/pagos/buscarId/1"))
                 .andExpect(status().isOk());
     }
 
@@ -91,7 +91,7 @@ class PagoControllerTest {
                 .thenReturn(List.of(crearResponseDTO()));
 
         mockMvc.perform(
-                get("/pago/buscarPorFecha/" + fecha)
+                get("/pagos/buscarPorFecha/" + fecha)
         )
         .andExpect(status().isOk());
     }
@@ -102,7 +102,7 @@ class PagoControllerTest {
         when(service.buscarPorIdPedido(1))
                 .thenReturn(crearResponseDTO());
 
-        mockMvc.perform(get("/pago/buscarPorIdPedido/1"))
+        mockMvc.perform(get("/pagos/buscarPorIdPedido/1"))
                 .andExpect(status().isOk());
     }
 
@@ -112,7 +112,7 @@ class PagoControllerTest {
         when(service.guardar(any()))
                 .thenReturn("[+] Pago registrado correctamente ...");
 
-        mockMvc.perform(post("/pago/crear")
+        mockMvc.perform(post("/pagos/crear")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(objectMapper.writeValueAsString(crearRequestDTO())))
                 .andExpect(status().isCreated());
